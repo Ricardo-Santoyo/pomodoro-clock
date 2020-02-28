@@ -1,17 +1,24 @@
 const clock = document.querySelector("#clock");
+const action = document.querySelector("#action");
 let time = 1500
 let interval;
+let n = 0;
 let minute;
 let second;
 
 clock.addEventListener('click', startTimer);
 function startTimer(e) {
+    action.textContent = "Work"
     interval = setInterval(timer, 1000);
 };
 
 function timer() {
-    if (time == 0) {
-        return clearInterval(interval);
+    //determines whether its workTime or breakTime
+    if (time == 0 && n % 2 == 0) {
+        breakTime();
+    };
+    if (time == 0 && n % 2 == 1) {
+        workTime();
     };
 
     time = time - 1
@@ -32,3 +39,15 @@ function showTime() {
 
     clock.textContent = minute + ":" + second;
 };
+
+function breakTime() {
+    action.textContent = "Break"
+    time = 300;
+    n = n + 1;
+}
+
+function workTime() {
+    action.textContent = "Work"
+    time = 1500;
+    n = n + 1;
+}
