@@ -1,7 +1,8 @@
 const clock = document.querySelector("#clock");
 const action = document.querySelector("#action");
 const stop = document.querySelector("#stop");
-let time = 1500
+const beep = document.querySelector("#beep");
+let time = 1500;
 let n = 0;
 let interval;
 let minute;
@@ -49,12 +50,14 @@ function breakTime() {
     action.textContent = "Break"
     time = 300;
     n = n + 1;
+    beep.play();
 };
 
 function workTime() {
     action.textContent = "Work"
     time = 1500;
     n = n + 1;
+    beep.play();
 };
 
 stop.addEventListener("click", stopTimer);
