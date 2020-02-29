@@ -30,6 +30,7 @@ body,html {
     background-color: #E74D3D;
     border: 5px solid #E74D3D;
     border-radius: 20px;
+    outline: none;
 }
 
 #stop:hover {
@@ -44,4 +45,6 @@ body,html {
     margin-top: 80px;
     font-size: 500%;
     font-weight: bold;
+    text-align: center;
+    width: 100%;
 }

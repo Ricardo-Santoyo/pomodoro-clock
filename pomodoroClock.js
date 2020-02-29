@@ -1,14 +1,19 @@
 const clock = document.querySelector("#clock");
 const action = document.querySelector("#action");
+const stop = document.querySelector("#stop");
 let time = 1500
-let interval;
 let n = 0;
+let interval;
 let minute;
 let second;
 
 clock.addEventListener('click', startTimer);
 function startTimer(e) {
+    if (time < 1500 && stop.textContent == "Stop") {
+        return;
+    };
     action.textContent = "Work"
+    stop.textContent = "Stop"
     interval = setInterval(timer, 1000);
 };
 
@@ -44,10 +49,29 @@ function breakTime() {
     action.textContent = "Break"
     time = 300;
     n = n + 1;
-}
+};
 
 function workTime() {
     action.textContent = "Work"
     time = 1500;
     n = n + 1;
-}
+};
+
+stop.addEventListener("click", stopTimer);
+function stopTimer() {
+    if (stop.textContent == "Reset") {
+        return reset();
+    }
+    clearInterval(interval);
+    action.textContent = "Click the timer to resume"
+    stop.textContent = "Reset"
+};
+
+function reset() {
+    time = 1500;
+    n = 0;
+    action.textContent = "Click the timer to start";
+    stop.textContent = "Stop";
+    clock.textContent = "25:00";
+    clearInterval(interval);
+};
